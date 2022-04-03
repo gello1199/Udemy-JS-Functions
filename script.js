@@ -1,6 +1,49 @@
 'use strict';
 
+// More Closure Examples
+
+// Example 1
+let f
+
+const g = function() {
+    const a = 23
+    f = function() {
+        console.log(a * 2)
+    }
+}
+
+const h = function() {
+    const b = 777
+    f = function() {
+        console.log(b * 2)
+    }
+}
+
+g()
+f()
+console.dir(f)
+
+// Re-assigning f function
+h()
+f()
+console.dir(f)
+
+// Example 2
+const boardPassengers = function(n, wait) {
+    const perGroup = n / 3
+
+    setTimeout(function(){
+        console.log(`We are now boarding all ${n} passengers`)
+        console.log(`There are 3 groups, each with ${perGroup} passengers`)
+    }, wait * 1000)
+
+    console.log(`Will start boarding in ${wait} seconds`)
+}
+boardPassengers(180, 3)
+
+
 // Closures
+
 // A closure makes a function remember all of the variables that existed at the functions birthplace
 // A function has access to the variable environment of the execution context in which it was created, even after the execution context is gone
 // Closure: Variable environment attached to the function, exactly as it was at the time and place the function was created
@@ -10,22 +53,22 @@
 // A closure is like a backpack that a function carries around wherever it goes. This backpack has all the variables that were present in the environment where the function was created.
 // We do NOT have to manually create closures, this is a JavaScript feature that happens automatically. We can't even access closed-over variable explicitly. A closure is NOT a tangible JS object
 
-const secureBooking = function() {
-    let passengerCount = 0
+// const secureBooking = function() {
+//     let passengerCount = 0
 
-    return function() {
-        passengerCount++
-        console.log(`${passengerCount} passengers`)
-    }
-}
+//     return function() {
+//         passengerCount++
+//         console.log(`${passengerCount} passengers`)
+//     }
+// }
 
-const booker = secureBooking()
+// const booker = secureBooking()
 
-booker()
-booker()
-booker()
+// booker()
+// booker()
+// booker()
 
-console.dir(booker)
+// console.dir(booker)
 
 // Immediately Invoked Function Expressions
 
