@@ -1,28 +1,55 @@
 'use strict';
 
+// Closures
+// A closure makes a function remember all of the variables that existed at the functions birthplace
+// A function has access to the variable environment of the execution context in which it was created, even after the execution context is gone
+// Closure: Variable environment attached to the function, exactly as it was at the time and place the function was created
+// A closure is the closed-over variable environment of the execution in which a function was created, even after that execution context is gone
+// A closure gives a function access to all the variables of its parent function, even after that parent function has returned. The function keeps a reference to its outer scope, which preserves that scope chain throughout time
+// A closure makes sure that a function doesn't loose connection to variables that existed at the function's birth place
+// A closure is like a backpack that a function carries around wherever it goes. This backpack has all the variables that were present in the environment where the function was created.
+// We do NOT have to manually create closures, this is a JavaScript feature that happens automatically. We can't even access closed-over variable explicitly. A closure is NOT a tangible JS object
+
+const secureBooking = function() {
+    let passengerCount = 0
+
+    return function() {
+        passengerCount++
+        console.log(`${passengerCount} passengers`)
+    }
+}
+
+const booker = secureBooking()
+
+booker()
+booker()
+booker()
+
+console.dir(booker)
+
 // Immediately Invoked Function Expressions
 
-const runOnce = function() {
-    console.log('This will never run again');
-};
-runOnce();
+// const runOnce = function() {
+//     console.log('This will never run again');
+// };
+// runOnce();
 
-// IIFE
-(function () {
-    console.log('This will never run again');
-    const isPrivate = 23;
-})();
+// // IIFE
+// (function () {
+//     console.log('This will never run again');
+//     const isPrivate = 23;
+// })();
 
-// console.log(isPrivate)
+// // console.log(isPrivate)
 
-(() => console.log('This will also never run again'))();
+// (() => console.log('This will also never run again'))();
 
-{
-    const isPrivate = 23;
-    var notPrivate = 46
-}
-// console.log(isPrivate)
-console.log(notPrivate)
+// {
+//     const isPrivate = 23;
+//     var notPrivate = 46
+// }
+// // console.log(isPrivate)
+// console.log(notPrivate)
 
 
 // Coding Challenge #1
